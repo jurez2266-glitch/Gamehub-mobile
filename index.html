@@ -3,13 +3,324 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>GameHub Mobile</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+.header{
+position:sticky;
+top:0;
+z-index:100;
+background:#111827;
+padding:15px;
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.menu-btn{
+font-size:26px;
+cursor:pointer;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+position:fixed;
+left:-280px;
+top:0;
+width:280px;
+height:100%;
+background:#111827;
+transition:.3s;
+z-index:999;
+overflow-y:auto;
+}
+
+.sidebar.active{
+left:0;
+}
+
+.sidebar-header{
+padding:25px;
+background:#f59e0b;
+font-size:22px;
+font-weight:bold;
+}
+
+.sidebar ul{
+list-style:none;
+}
+
+.sidebar ul li a{
+display:block;
+padding:18px 22px;
+color:white;
+text-decoration:none;
+border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.sidebar ul li a:hover{
+background:#1e293b;
+}
+
+/* OVERLAY */
+
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.55);
+display:none;
+z-index:900;
+}
+
+.overlay.active{
+display:block;
+}
+
+/* HERO */
+
+.hero{
+padding:40px 20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:30px;
+margin-bottom:10px;
+}
+
+.hero p{
+opacity:.8;
+}
+
+/* KATEGORI */
+
+.categories{
+padding:15px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.category{
+background:#1e293b;
+padding:18px;
+border-radius:12px;
+text-align:center;
+}
+
+/* GAME */
+
+.games{
+padding:15px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
+
+.card{
+background:#1e293b;
+border-radius:12px;
+overflow:hidden;
+}
+
+.card img{
+width:100%;
+display:block;
+}
+
+.card-body{
+padding:12px;
+}
+
+/* FOOTER NAV */
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+height:65px;
+background:#111827;
+display:flex;
+justify-content:space-around;
+align-items:center;
+border-top:1px solid rgba(255,255,255,.05);
+}
+
+.bottom-nav a{
+text-decoration:none;
+color:white;
+font-size:12px;
+text-align:center;
+}
+
+.bottom-nav div:first-child{
+font-size:22px;
+}
+
+/* DESKTOP */
+
+@media(min-width:768px){
+
+.categories{
+grid-template-columns:repeat(4,1fr);
+}
+
+.games{
+grid-template-columns:repeat(4,1fr);
+}
+
+.bottom-nav{
+display:none;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-<h1>GameHub Mobile</h1>
+<div id="overlay" class="overlay"></div>
 
-<p>Website berhasil dibuat.</p>
+<div id="sidebar" class="sidebar">
+
+<div class="sidebar-header">
+GAMEHUB
+</div>
+
+<ul>
+<li><a href="#">🏠 Beranda</a></li>
+<li><a href="#">🎮 Semua Game</a></li>
+<li><a href="#">🔥 Populer</a></li>
+<li><a href="#">🏆 Turnamen</a></li>
+<li><a href="#">🎁 Event</a></li>
+<li><a href="#">⭐ Favorit</a></li>
+<li><a href="#">⚙ Pengaturan</a></li>
+</ul>
+
+</div>
+
+<header class="header">
+
+<div class="menu-btn" onclick="toggleMenu()">
+☰
+</div>
+
+<h2>GameHub</h2>
+
+</header>
+
+<section class="hero">
+
+<h1>Portal Game Modern</h1>
+
+<p>
+Template portal game responsif mobile.
+</p>
+
+</section>
+
+<section class="categories">
+
+<div class="category">Action</div>
+<div class="category">Adventure</div>
+<div class="category">Sports</div>
+<div class="category">Puzzle</div>
+
+</section>
+
+<section class="games">
+
+<div class="card">
+<img src="https://via.placeholder.com/400x250">
+<div class="card-body">
+<h3>Game One</h3>
+</div>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/400x250">
+<div class="card-body">
+<h3>Game Two</h3>
+</div>
+</div>
+
+</section>
+
+<nav class="bottom-nav">
+
+<a href="#">
+<div>🏠</div>
+<div>Home</div>
+</a>
+
+<a href="#">
+<div>🎮</div>
+<div>Game</div>
+</a>
+
+<a href="#">
+<div>🔥</div>
+<div>Top</div>
+</a>
+
+<a href="#">
+<div>👤</div>
+<div>Akun</div>
+</a>
+
+</nav>
+
+<script>
+
+const sidebar =
+document.getElementById('sidebar');
+
+const overlay =
+document.getElementById('overlay');
+
+function toggleMenu(){
+
+sidebar.classList.toggle('active');
+
+overlay.classList.toggle('active');
+
+}
+
+overlay.addEventListener(
+
+'click',
+
+()=>{
+
+sidebar.classList.remove('active');
+
+overlay.classList.remove('active');
+
+}
+
+);
+
+</script>
 
 </body>
 </html>
